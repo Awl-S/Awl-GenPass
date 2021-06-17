@@ -5,6 +5,6 @@
 
 # Версии .exe 
 The link will enter on Yandex
- ## [vk.cc/c31Ff6](vk.cc/c31Ff6)
+ ## [vk.cc/c31Ff6](https://vk.cc/c31Ff6)
 
 ###### Последнее обновление: 17.06.2021

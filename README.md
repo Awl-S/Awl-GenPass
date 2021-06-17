@@ -7,7 +7,10 @@
 
 # Версии .exe 
 The link will enter on Yandex
- ## [vk.cc/c31Ff6](https://vk.cc/c31Ff6)
+## Версия без чекера прочности пароля
+ ### [vk.cc/c31Ff6](https://vk.cc/c31Ff6)
+## Версия с чекером прочности пароля
+ ### [vk.cc/c325kv](https://vk.cc/c325kv)
 
 ###### Последнее обновление: 17.06.2021
 ###### Awl studio

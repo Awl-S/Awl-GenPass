@@ -18,6 +18,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime> 
+#include <Windows.h>
 #define BOOST_DATE_TIME_NO_LIB
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <boost/date_time.hpp>
@@ -28,10 +29,15 @@ using namespace std;
 
 int main()
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	setlocale(0, "");
 	uint64_t N;
+
+	cout << "Подготовлено для Softers & Neyton-Devs" << "\n";
+	SetConsoleTextAttribute(hConsole, (WORD)((8 << 4) | 15));
+	system("color F0");
 	cout << "Генератор паролей" << "\n";
-	char Path[9] = "pass.txt";
+	char Path[16] = "Awl GenPass.txt";
 	string url;  cout << "Адрес сайта: "; cin >> url;
 	string login;  cout << "Логин: "; cin >> login;
 	cout << "Длина пароля: "; cin >> N;
@@ -69,7 +75,6 @@ int main()
 		out << "Login: " << login << "\n";
 		out << "Password: " << pass << "\n";
 		out << "\n";
-
 	}
 
 	out.close();

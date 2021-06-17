@@ -1,5 +1,5 @@
 # Awl GenPass
-## Разработана для проекта Softers & Neyton-Devs - {username}
+## Разработана для проекта Softers & Neyton-Devs 
 ### Менеджер паролей с сохранением данных.
 ![Иллюстрация к проекту](https://habrastorage.org/webt/g6/wm/zp/g6wmzpmhozx0yfvra7qzpmckqxe.png)
 
@@ -10,3 +10,4 @@ The link will enter on Yandex
  ## [vk.cc/c31Ff6](https://vk.cc/c31Ff6)
 
 ###### Последнее обновление: 17.06.2021
+###### Awl studio

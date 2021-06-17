@@ -5,7 +5,8 @@
 
 # Версии .exe 
 The link will enter on Yandex
-## https://vk.cc/c30sqi - x32 - 73 KB 
-## https://vk.cc/c30sH4 - x64 - 86 KB
+## vk.cc/c31Ff6 x86-x64
+
+
 
 ##### Последнее обновление: 17.06.2021

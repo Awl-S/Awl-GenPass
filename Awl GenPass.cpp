@@ -62,10 +62,12 @@ int main()
 
         }
     }
+
     cout << "\n";
     password[N] = 0;
     cout << password << "\n";
     ofstream out(Path, ios::app);
+
     if (out.is_open())
     {
         out << utcCur << "\n";

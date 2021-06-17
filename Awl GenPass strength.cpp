@@ -20,10 +20,8 @@
 #include <ctime> 
 #include <Windows.h>
 #define BOOST_DATE_TIME_NO_LIB
-#include <boost/date_time/gregorian/gregorian.hpp>
 #include <boost/date_time.hpp>
 #include <boost/date_time/local_time/local_time.hpp>
-#include <boost/date_time/posix_time/posix_time.hpp>
 
 using namespace std;
 
@@ -64,7 +62,7 @@ int main()
 
         }
     }
-
+    cout << "\n";
     password[N] = 0;
     cout << password << "\n";
     ofstream out(Path, ios::app);
@@ -74,14 +72,15 @@ int main()
         out << "Website URL: " << url << "\n";
         out << "Login: " << login << "\n";
         out << "Password: " << password << "\n";
+        out <<login << ":" << password << "\n";
         out << "\n";
     }
 
     out.close();
-
-    cout << "Проверить пароль на стойкость? [Y/n][Д/н]" << "\n";
+    cout << "\n";
+    cout << "Проверить пароль на стойкость? [Y/n] " << "\t";
     char check; cin >> check;
-    if (check == 'Y' || check == 'y'||check == 'Д' || check == 'д') {
+    if (check == 'Y' || check == 'y') {
         int pass_length = strlen(password);
 
         int point_upper = 0;
@@ -122,7 +121,7 @@ int main()
             point += 50;
         }
 
-
+        cout << "Ваш пароль: ";
         if (point_digit > 0 && point_lower > 0 && point_upper > 0 && point_symbol > 0) {
             point += 100;
         }
@@ -138,12 +137,10 @@ int main()
         else if (point >= 150 && point <= 200) {
             cout << "Сильный" << endl;
         }
-
-
         else if (point > 200) {
             cout << "Вы в безопастности" << endl;
         }
     }
+    cout << "\n";
     system("pause");
 }
-// Стыдно, да!

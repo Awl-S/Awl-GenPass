@@ -6,3 +6,9 @@
 #define BOOST_DATE_TIME_NO_LIB
 #include <boost/date_time.hpp>
 #include <boost/date_time/local_time/local_time.hpp>
+using namespace std;
+
+void data(char *password);
+
+
+

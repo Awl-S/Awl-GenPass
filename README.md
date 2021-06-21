@@ -7,7 +7,7 @@
 
 # Версии .exe 
 The link will enter on Yandex
-## Менеджер паролей v0.3
+## Менеджер паролей v0.4
  ### [vk.cc/c31Ff6](https://vk.cc/c31Ff6)
 
 

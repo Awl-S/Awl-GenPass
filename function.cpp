@@ -40,7 +40,7 @@ void data(char *password) {
     point += 50;
   }
 
-  cout << "Àíàëèçàòîð ïàðîëÿ: ";
+  cout << "ÐÐ½Ð°Ð»Ð¸Ð·Ð°Ñ‚Ð¾Ñ€ Ð¿Ð°Ñ€Ð¾Ð»Ñ: ";
   if (point_digit > 0 && point_lower > 0 && point_upper > 0 &&
       point_symbol > 0) {
     point += 100;
@@ -48,25 +48,25 @@ void data(char *password) {
 
   if (point <= 50 || pass_length < 8) {
     SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 4));
-    cout << "~Ïàðîëü Ñëàáûé" << endl;
+    cout << "~ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð¡Ð»Ð°Ð±Ñ‹Ð¹" << endl;
 
   }
 
   else if (point > 50 && point <= 100) {
     SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
 
-    cout << "Íó òàêîå" << endl;
+    cout << "~ÐÑƒ Ñ‚Ð°ÐºÐ¾Ðµ" << endl;
 
   }
 
   else if (point >= 150 && point <= 200) {
     SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 10));
 
-    cout << "Ñèëüíûé" << endl;
+    cout << "~Ð¡Ð¸Ð»ÑŒÐ½Ñ‹Ð¹" << endl;
   }
 
   else if (point > 200) {
     SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 2));
-    cout << "Âû â áåçîïàñòíîñòè" << endl;
+    cout << "~Ð’Ñ‹ Ð² Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÑ‚Ð½Ð¾ÑÑ‚Ð¸" << endl;
   }
 }

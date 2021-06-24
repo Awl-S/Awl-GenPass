@@ -1,90 +1,61 @@
-/*
- * Copyright (c) 2021 Nikita Batnikov <designAwl@bk.ru>
- *
- * Permission to use, copy, modify, and distribute this software for any
- * purpose with or without fee is hereby granted, provided that the above
- * copyright notice and this permission notice appear in all copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
- * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
- * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
- * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
- * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- */
-
-
+// Author Nikita Batnikov <designAwl@bk.ru>
 #include "libs.h"
 
-using namespace std;
-typedef unsigned int ull;
-
-
 int main() {
-  HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-  setlocale(0, "");
+    setlocale(0, "");
 
-  char Path[19] = "AWL-S Password.txt";
+    cout << "Подготовлено для Softers & Neyton-Devs" << "\n";
+    cout << "Менеджер паролей" << "\n";
 
-  cout << "Подготовлено для Softers & Neyton-Devs"
-       << "\n";
+    string url;
+    cout << "Адрес сайта: "; cin >> url;
 
-  cout << "Менеджер паролей"
-       << "\n";
+    string login;
+    cout << "Логин: "; cin >> login;
 
-  string url;
-  cout << "Адрес сайта: ";
-  cin >> url;
-
-  string login;
-  cout << "Логин: ";
-  cin >> login;
-
-  ull N;
-  cout << "Длина пароля: ";
-  cin >> N;
-
-  char *password = new char[N + 1];
+    uint32_t N;
+    cout << "Длина пароля: ";  cin >> N;
 
     srand(time(NULL));
-     boost::posix_time::ptime utcCur = boost::posix_time::second_clock::local_time();
+    char* password = new  char[N+1];
 
-  for (ull i = 0; i < N; ++i) {
-    switch (rand() % 3) {
-    case 0:
-      password[i] = rand() % 32 + '!';
-      break;
-    case 1:
-      password[i] = rand() % 26 + 'A';
-      break;
-    case 2:
-      password[i] = rand() % 26 + 'a';
+    for (uint32_t i = 0; i < N; ++i) {
+        switch (rand() % 3) {
+        case 0:
+            password[i] = rand() % 32 + '!';
+            break;
+        case 1:
+            password[i] = rand() % 26 + 'A';
+            break;
+        case 2:
+            password[i] = rand() % 26 + 'a';
+        }
     }
-  } 
+    password[N] = 0;
 
-  cout << "\n";
-  password[N] = 0;
-  cout << password << "\n";
+    if (N < 100) {
+        cout << password << "\n";
+    }
+    else
+    {
+        cout <<"\n" << "А вам оно надо? Пароль сохранился сразу в файл." << "\n";
+    }
 
-  ofstream out(Path, ios::app);
+    char Path[19] = "AWL-S GenPass.txt";
+    boost::posix_time::ptime localTIME = boost::posix_time::second_clock::local_time();
 
-  if (out.is_open()) {
-    out << utcCur << "\n";
-    out << "Website URL: " << url << "\n";
-    out << "Login: " << login << "\n";
-    out << "Password: " << password << "\n";
-    out << login << ":" << password << "\n";
-    out << "\n";
-  } 
-  out.close();
-  data(password);
- cout << "\n";
+    ofstream save(Path, ios::app);
+    if (save.is_open()) {
+        save << "\n";
+        save << localTIME << "\n";
+        save << "Website URL: " << url << "\n";
+        save << "Login: " << login << "\n";
+        save << "Password: " << password << "\n";
+        save << login << ":" << password << "\n";
+    }
+    save.close();
 
-  delete[] password;
-  SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 7));
-  cout << "Данные записаны в файл " << Path << endl;
+    delete[] password;
 
-
-  system("pause");
+    system("pause");
 }

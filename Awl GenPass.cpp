@@ -32,30 +32,9 @@ int main() {
         }
     }
     password[N] = 0;
-
-    if (N < 100) {
-        cout << password << "\n";
-    }
-    else
-    {
-        cout <<"\n" << "А вам оно надо? Пароль сохранился сразу в файл." << "\n";
-    }
-
-    char Path[19] = "AWL-S GenPass.txt";
-    boost::posix_time::ptime localTIME = boost::posix_time::second_clock::local_time();
-
-    ofstream save(Path, ios::app);
-    if (save.is_open()) {
-        save << "\n";
-        save << localTIME << "\n";
-        save << "Website URL: " << url << "\n";
-        save << "Login: " << login << "\n";
-        save << "Password: " << password << "\n";
-        save << login << ":" << password << "\n";
-    }
-    save.close();
-
-    delete[] password;
+    
+    save(N, password, url, login);
+    data(password);
 
     system("pause");
 }

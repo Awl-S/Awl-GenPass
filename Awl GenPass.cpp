@@ -1,25 +1,30 @@
 // Author Nikita Batnikov <designAwl@bk.ru>
 #include "libs.h"
 
+struct userData
+{
+public:
+    string url;
+    string login;
+    uint32_t N;
+};
+
 int main() {
     setlocale(0, "");
 
     cout << "Подготовлено для Softers & Neyton-Devs" << "\n";
     cout << "Менеджер паролей" << "\n";
 
-    string url;
-    cout << "Адрес сайта: "; cin >> url;
+    userData userData;
 
-    string login;
-    cout << "Логин: "; cin >> login;
-
-    uint32_t N;
-    cout << "Длина пароля: ";  cin >> N;
+    cout << "Адрес сайта: "; cin >> userData.url;
+    cout << "Логин: "; cin >> userData.login;
+    cout << "Длина пароля: ";  cin >> userData.N;
 
     srand(time(NULL));
-    char* password = new  char[N+1];
+    char* password = new  char[userData.N + 1];
 
-    for (uint32_t i = 0; i < N; ++i) {
+    for (uint32_t i = 0; i < userData.N; ++i) {
         switch (rand() % 3) {
         case 0:
             password[i] = rand() % 32 + '!';
@@ -31,10 +36,13 @@ int main() {
             password[i] = rand() % 26 + 'a';
         }
     }
-    password[N] = 0;
-    
-    save(N, password, url, login);
+    password[userData.N] = 0;
+
+    save(userData.N, password, userData.url, userData.login);
+
     data(password);
+    
+    delete[] password;
 
     system("pause");
 }

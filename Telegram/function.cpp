@@ -8,7 +8,7 @@ void save(int N, char* password, string url, string login) {
     if (N <= 100)
         cout << password << "\n";
     else
-        cout << "\n" << "À âàì îíî íàäî? Ïàðîëü ñîõðàíèëñÿ ñðàçó â ôàéë." << "\n";
+        cout << "\n" << "Ð Ð²Ð°Ð¼ Ð¾Ð½Ð¾ Ð½Ð°Ð´Ð¾? ÐŸÐ°Ñ€Ð¾Ð»ÑŒ ÑÐ¾Ñ…Ñ€Ð°Ð½Ð¸Ð»ÑÑ ÑÑ€Ð°Ð·Ñƒ Ð² Ñ„Ð°Ð¹Ð»." << "\n";
 
     char Path[19] = "AWL-S GenPass.txt";
     boost::posix_time::ptime localTIME = boost::posix_time::second_clock::local_time();
@@ -23,12 +23,11 @@ void save(int N, char* password, string url, string login) {
         save << login << ":" << password << "\n";
     }
     save.close();
-
     cout << "\n";
 };
 
 void data(char* password) {
-
+    
     int pass_length = strlen(password), point_upper = 0, point_lower = 0, point_digit = 0, point_symbol = 0, point = 0;
 
     for (int i = 0; i < pass_length; i++) {
@@ -55,28 +54,27 @@ void data(char* password) {
         point += 50;
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    cout << "Àíàëèçàòîð ïàðîëÿ: ";
+    cout << "ÐÐ½Ð°Ð»Ð¸Ð·Ð°Ñ‚Ð¾Ñ€ Ð¿Ð°Ñ€Ð¾Ð»Ñ: ";
     if (point_digit > 0 && point_lower > 0 && point_upper > 0 &&
         point_symbol > 0)
         point += 100;
 
     if (point <= 50 || pass_length < 8) {
         SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 4));
-        cout << "~Ïàðîëü Ñëàáûé" << endl;
+        cout << "~ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð¡Ð»Ð°Ð±Ñ‹Ð¹" << endl;
     }
     else if (point > 50 && point <= 100) {
         SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
-        cout << "~Íó òàêîå" << endl;
+        cout << "~ÐÑƒ Ñ‚Ð°ÐºÐ¾Ðµ" << endl;
     }
     else if (point >= 150 && point <= 200) {
         SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 10));
-        cout << "~Ñèëüíûé" << endl;
+        cout << "~Ð¡Ð¸Ð»ÑŒÐ½Ñ‹Ð¹" << endl;
     }
     else if (point > 200) {
         SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 2));
-        cout << "~Âû â áåçîïàñòíîñòè" << endl;
+        cout << "~Ð’Ñ‹ Ð² Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÑ‚Ð½Ð¾ÑÑ‚Ð¸" << endl;
     }
-
     SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 7));
 }
 
@@ -95,9 +93,8 @@ void telegramSend(char* password, string url, string login) {
 
     system("python telegram.py");
     system("cls");
-    cout << "Äàííûå îòïðàâëåíû â òåëåãðàìì!" << "\n";
+    cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð² Telegram!" << "\n";
     cout << "\n";
-    cout << "Âàø ïàðîëü: " << password << "\n";
+    cout << "Ð’Ð°Ñˆ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ: " << password << "\n";
     cout << "\n";
-
 }

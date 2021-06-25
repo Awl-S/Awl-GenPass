@@ -11,5 +11,5 @@ The link will enter on Yandex
  ### [vk.cc/c31Ff6](https://vk.cc/c31Ff6)
 
 
-###### Последнее обновление: 21.06.2021
+###### Последнее обновление: 25.06.2021
 ###### Awl studio

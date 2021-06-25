@@ -26,8 +26,8 @@
 * AWL-S GenPass Standart [vk.cc/c31Ff6](https://vk.cc/c31Ff6) 
 * AWL-S GenPass Telegram [vk.cc/c325kv6](https://vk.cc/c325kv) 
 
-#Установка Telegram версии:
-Для установки telegram версии вам необходимо установить Python и две библиотеки.
+# Установка Telegram версии:
+Для установки Telegram версии вам необходимо установить Python и две библиотеки.
 * [Python](https://www.python.org/)
 После установки открываем консоль и используем команды установки библиотек:
 * pip install asyncio

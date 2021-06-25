@@ -17,4 +17,3 @@ using namespace std;
 
 void save(int N, char* password, string url, string login);
 void data(char* password);
-void telegramSend(char* password, string url, string login);

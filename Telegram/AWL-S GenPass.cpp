@@ -12,16 +12,16 @@ public:
 int main() {
     setlocale(0, "");
 
-    cout << "Ïîäãîòîâëåíî äëÿ Softers & Neyton-Devs" << "\n";
-    cout << "Ìåíåäæåð ïàðîëåé" << "\n";
+    cout << "ÐŸÐ¾Ð´Ð³Ð¾Ñ‚Ð¾Ð²Ð»ÐµÐ½Ð¾ Ð´Ð»Ñ Softers & Neyton-Devs" << "\n";
+    cout << "ÐœÐµÐ½ÐµÐ´Ð¶ÐµÑ€ Ð¿Ð°Ñ€Ð¾Ð»ÐµÐ¹" << "\n";
 
     userData userData;
 
-    cout << "Àäðåñ ñàéòà: "; cin >> userData.url;
+    cout << "ÐÐ´Ñ€ÐµÑ ÑÐ°Ð¹Ñ‚Ð°: "; cin >> userData.url;
 
-    cout << "Ëîãèí: "; cin >> userData.login;
+    cout << "Ð›Ð¾Ð³Ð¸Ð½: "; cin >> userData.login;
 
-    cout << "Äëèíà ïàðîëÿ: ";  cin >> userData.N;
+    cout << "Ð”Ð»Ð¸Ð½Ð° Ð¿Ð°Ñ€Ð¾Ð»Ñ: ";  cin >> userData.N;
 
     srand(time(NULL));
     char* password = new  char[userData.N + 1];
@@ -45,11 +45,11 @@ int main() {
     data(password);
 
     cout << "\n";
-    cout << "Îòïðàâèòü äàííûå â Telegram? " << "\n";
+    cout << "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð² Telegram? " << "\n";
 
-    cout << "0 - Îòïðàâèòü; " << "\n" << "1 - Çàâåðøèòü ïðîöåññ;" << "\n";
+    cout << "0 - ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ; " << "\n" << "1 - Ð—Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚ÑŒ Ð¿Ñ€Ð¾Ñ†ÐµÑÑ;" << "\n";
 
-    cout << "Ââåäèòå ÷èñëî: ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾: ";
 
     int sendTg; cin >> sendTg;
     if (sendTg == 0)

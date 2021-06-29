@@ -10,10 +10,10 @@ public:
 };
 
 int main() {
+    system("title AWL-S Password manager");
     setlocale(0, "");
 
-    cout << "Подготовлено для Softers & Neyton-Devs" << "\n";
-    cout << "Менеджер паролей" << "\n";
+    cout << "Менеджер паролей от AWL-S \t \t https://github.com/Awl-S" << "\n";
 
     userData userData;
 
@@ -53,9 +53,8 @@ int main() {
 
     int sendTg; cin >> sendTg;
     if (sendTg == 0)
-        telegramSend(password, userData.url, userData.login);
+        telegramSend(password, userData.url, userData.login, userData.N);
 
     delete[] password;
-
     system("pause");
 }

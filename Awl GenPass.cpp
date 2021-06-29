@@ -12,9 +12,10 @@ public:
 int main() {
     setlocale(0, "");
 
-    cout << "Подготовлено для Softers & Neyton-Devs" << "\n";
-    cout << "Менеджер паролей" << "\n";
+    system("title AWL-S Password manager");
+    setlocale(0, "");
 
+    cout << "Менеджер паролей от AWL-S \t \t https://github.com/Awl-S" << "\n";
     userData userData;
 
     cout << "Адрес сайта: "; cin >> userData.url;
@@ -41,8 +42,7 @@ int main() {
     save(userData.N, password, userData.url, userData.login);
 
     data(password);
-    
-    delete[] password;
 
+    delete[] password;
     system("pause");
 }

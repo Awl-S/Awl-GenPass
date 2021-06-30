@@ -1,26 +1,16 @@
 // Author Nikita Batnikov <designAwl@bk.ru>
 #include "libs.h"
 
-struct userData
-{
-public:
-    string url;
-    string login;
-    uint32_t N;
-};
-
 int main() {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
     system("title AWL-S Password manager");
+
     setlocale(0, "");
-
-    cout << "Менеджер паролей от AWL-S \t \t https://github.com/Awl-S" << "\n";
-
+    cout << "Менеджер паролей от AWL-S \n";
     userData userData;
-
     cout << "Адрес сайта: "; cin >> userData.url;
-
     cout << "Логин: "; cin >> userData.login;
-
     cout << "Длина пароля: ";  cin >> userData.N;
 
     srand(time(NULL));
@@ -39,22 +29,29 @@ int main() {
         }
     }
     password[userData.N] = 0;
-
     save(userData.N, password, userData.url, userData.login);
-
     data(password);
 
-    cout << "\n";
-    cout << "Отправить данные в Telegram? " << "\n";
+    cout << "\nОтправить данные в Telegram? \n";
+    SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 14));
 
-    cout << "0 - Отправить; " << "\n" << "1 - Завершить процесс;" << "\n";
+    cout << "Отправить [Пробел/Space];\nЗакрыть программу [Левый ALT | Left  ALT];\n";
+    SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 7));
 
-    cout << "Введите число: ";
-
-    int sendTg; cin >> sendTg;
-    if (sendTg == 0)
-        telegramSend(password, userData.url, userData.login, userData.N);
-
+    while (1 != 0)
+    {
+        if (GetAsyncKeyState(VK_SPACE)) {
+            cout << "Идет отправка..\n";
+            telegramSend(password, userData.url, userData.login, userData.N);
+            break;
+        }
+        else if (GetAsyncKeyState(VK_LMENU))
+        {
+            delete[] password;
+            exit(0);
+        }
+    }
     delete[] password;
     system("pause");
+    return 0;
 }

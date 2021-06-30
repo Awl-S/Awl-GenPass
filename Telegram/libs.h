@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <ctime>  
-#include <random> 
 #include <fstream>
 #include <Windows.h>
 #include <cstdio>
@@ -15,6 +14,18 @@
 
 using namespace std;
 
-void save(int N, char* password, string url, string login);
+void save(uint32_t N, char* password, string url, string login);
 void data(char* password);
-void telegramSend(char* password, string url, string login);
+void telegramSend(char* password, string url, string login, uint16_t N);
+
+const char PathTemp[] = "2C0EA.txt";
+const char Path[] = "AWL-S GenPass.txt";
+const uint16_t limit = {3072};
+
+struct userData
+{
+public:
+    string url;
+    string login;
+    uint32_t N;
+};

@@ -2,32 +2,34 @@
 
 #include "libs.h"
 
-void save(int N, char* password, string url, string login) {
-    cout << "\n";
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    if (N <= 100)
-        cout << password << "\n";
-    else
-        cout << "\n" << "А вам оно надо? Пароль сохранился сразу в файл." << "\n";
+void save(uint32_t N, char* password, string url, string login) {
+    system("title AWL-S Запись данный в файл");
 
-    char Path[19] = "AWL-S GenPass.txt";
     boost::posix_time::ptime localTIME = boost::posix_time::second_clock::local_time();
 
     ofstream save(Path, ios::app);
     if (save.is_open()) {
         save << "\n";
-        save << localTIME << "\n";
-        save << "Website URL: " << url << "\n";
-        save << "Login: " << login << "\n";
-        save << "Password: " << password << "\n";
+        save << localTIME;
+        save << "\nWebsite URL: " << url;
+        save << "\nLogin: " << login;
+        save << "\nPassword: " << password << "\n";
         save << login << ":" << password << "\n";
     }
     save.close();
-    cout << "\n";
+
+    if (N <= limit) {
+        SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 5));
+        cout << "\n" << password << "\n\n";
+        SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 7));
+    }
+    else
+        cout << "Пароль очень длинный: данные сразу сохранены в файл. " << Path << "\n";
 };
 
 void data(char* password) {
-    
     int pass_length = strlen(password), point_upper = 0, point_lower = 0, point_digit = 0, point_symbol = 0, point = 0;
 
     for (int i = 0; i < pass_length; i++) {
@@ -43,58 +45,66 @@ void data(char* password) {
 
     if (point_digit > 0)
         point += 50;
-
     if (point_lower > 0)
         point += 50;
-
     if (point_upper > 0)
         point += 50;
-
     if (point_symbol > 0)
         point += 50;
 
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    cout << "Анализатор пароля: ";
+    cout << "Приблизительный  анализ пароля: ";
     if (point_digit > 0 && point_lower > 0 && point_upper > 0 &&
         point_symbol > 0)
         point += 100;
 
     if (point <= 50 || pass_length < 8) {
         SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 4));
-        cout << "~Пароль Слабый" << endl;
+        cout << "~ Пароль Слабый\n";
     }
     else if (point > 50 && point <= 100) {
-        SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
-        cout << "~Ну такое" << endl;
+        SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 12));
+        cout << "~ Ну такое\n";
     }
     else if (point >= 150 && point <= 200) {
         SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 10));
-        cout << "~Сильный" << endl;
+        cout << "~ Сильный\n";
     }
     else if (point > 200) {
         SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 2));
-        cout << "~Вы в безопастности" << endl;
+        cout << "~ Вы в безопастности\n";
     }
     SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 7));
 }
 
-void telegramSend(char* password, string url, string login) {
+void telegramSend(char* password, string url, string login, uint16_t N) {
     boost::posix_time::ptime localTIME = boost::posix_time::second_clock::local_time();
-    char PathTemp[10] = "2C0EA.txt";
+    system("title AWL-S Отправка в Telegram..");
+
 
     ofstream save(PathTemp, ios::out);
     if (save.is_open()) {
-
-        save <<  localTIME << "\n";
-        save << "Website URL: " << url << "\n";
-        save << "Login: " << login << endl;
-        save << "Password: " << "\t" << password << endl;
+        save << "Отправлено с помощью AWL-S GenPass\n";
+        save << localTIME;
+        save << "\nWebsite URL: " << url;
+        save << "\nLogin: " << login;
+        save << "\nPassword: " << password;
     } save.close();
 
     system("python telegram.py");
     system("cls");
-    cout << "Данные отправлены в Telegram!" << "\n";
-    cout << "\n";
-    cout << "Ваш пароль: " << password << "\n";
-    cout << "\n";
+    if (N <= limit) {
+        cout << "Данные сохранены! Для безопасности проверьте чат.\n";
+        cout << "Ваш пароль:\n\n";
+        SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 5));
+        cout << password << "\n\n";
+    }
+    else
+    {
+        system("color 4");
+        cout << "\nДанные сохранены! Для безопасности проверьте чат.\n";
+        cout << "Пароль очень длинный: данные сразу сохранены в файл.\n";
+        cout << "Пароль такой длины может не отправиться!!!\n\n";
+    }
+    SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 7));
+    remove(PathTemp);
 }

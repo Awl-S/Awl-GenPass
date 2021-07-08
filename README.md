@@ -22,8 +22,7 @@
 * Особенность: Настройка личного телеграмм бота для сохранения паролей в Telegram Chat.
 
 # Менеджер паролей (64x-32x)
-* AWL-S GenPass Standart [vk.cc/c31Ff6](https://vk.cc/c31Ff6) 
-* AWL-S GenPass Telegram [vk.cc/c325kv6](https://vk.cc/c325kv) 
+* AWL-S GenPass [vk.cc/c325kv6](https://vk.cc/c325kv) 
 
 # Установка Telegram версии:
 Для установки Telegram версии вам необходимо установить Python и две библиотеки.
